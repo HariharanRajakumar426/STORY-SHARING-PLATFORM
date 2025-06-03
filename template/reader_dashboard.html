@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Reader Dashboard{% endblock %}
+{% block content %}
+    <h2>Reader Dashboard</h2>
+    <h3>Available Stories</h3>
+    {% for story in stories %}
+        <div class="story-card">
+            <h4>{{ story.title }}</h4>
+            <p>By {{ story.author.username }}</p>
+            <a href="{{ url_for('story_view', story_id=story.id) }}">Read Story</a>
+        </div>
+    {% else %}
+        <p>No stories available.</p>
+    {% endfor %}
+{% endblock %}
